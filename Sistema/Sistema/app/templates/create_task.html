@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear pedido</title>
+
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+        background: #f4f6f9;
+    }
+
+    .titulo{
+        padding: 30px 40px;
+        font-size: 28px;
+        color: #111827;
+    }
+
+    .form-container{
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    label{
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    input, textarea, select{
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        outline: none;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+    textarea{
+        resize: none;
+        height: 120px;
+    }
+
+    input:focus, textarea:focus, select:focus{
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 2px rgba(79,70,229,0.1);
+    }
+
+    .botones{
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .crear{
+        flex: 1;
+        padding: 12px;
+        background: #4f46e5;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    .crear:hover{
+        background: #4338ca;
+    }
+
+    .cancelar{
+        flex: 1;
+        text-align: center;
+        padding: 12px;
+        background: #e5e7eb;
+        color: #333;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .cancelar:hover{
+        background: #d1d5db;
+    }
+
+    .error{
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    </style>
+</head>
+
+<body>
+
+<h1 class="titulo">Crear nuevo pedido</h1>
+
+<div class="form-container">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="input-group">
+            <label>Producto</label>
+            {{ form.Product }}
+        </div>
+
+        <div class="input-group">
+            <label>Descripción del pedido</label>
+            {{ form.descripcion }}
+        </div>
+
+        <div class="input-group">
+            <label>Estado</label>
+            {{ form.estado }}
+        </div>
+
+        <div class="input-group">
+            <label>Nombre del cliente</label>
+            {{ form.nombre }}
+        </div>
+
+        <div class="input-group">
+            <label>Fecha</label>
+            {{ form.fecha }}
+        </div>
+
+        <div class="input-group">
+            <label>Hora</label>
+            {{ form.hora }}
+        </div>
+
+        <div class="input-group">
+            <label>Número de teléfono</label>
+            {{ form.numero_telefono }}
+            {{ form.numero_telefono.errors }}
+        </div>
+
+        <div class="input-group">
+            <label>Tipografía</label>
+            {{ form.tipografia }}
+        </div>
+
+        <div class="botones">
+            <button type="submit" class="crear">Crear</button>
+            <a href="{% url 'home' %}" class="cancelar">Cancelar</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+```html
+<h1 class="titulo">Editar Pedido</h1>
+<div class="form-container">
+<form method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+        <label>Producto</label>
+        <input type="text" name="Product" value="{{ task.Product }}">
+    </div>
+    <div class="input-group">
+        <label>Descripción</label>
+        <textarea name="descripcion">{{ task.descripcion }}</textarea>
+    </div>
+    <div class="input-group">
+        <label>Estado</label>
+        <select name="estado">
+            <option value="Sin previo" {% if task.estado == "Sin previo" %}selected{% endif %}>Sin previo</option>
+            <option value="Grabando" {% if task.estado == "Grabando" %}selected{% endif %}>Para Grabar</option>
+            <option value="Entregar" {% if task.estado == "Entregar" %}selected{% endif %}>Para Entregar</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label>Cliente</label>
+        <input type="text" name="nombre" value="{{ task.nombre }}">
+    </div>
+    <div class="input-group">
+        <label>Teléfono</label>
+        <input type="text" name="numero_telefono" value="{{ task.numero_telefono }}">
+    </div>
+    <div class="input-group">
+        <label>Fecha</label>
+        <input type="date" name="fecha" value="{{ task.fecha }}">
+    </div>
+    <div class="input-group">
+        <label>Hora</label>
+        <input type="time" name="hora" value="{{ task.hora }}">
+    </div>
+    <div class="input-group">
+        <label>Tipografía</label>
+        <input type="text" name="tipografia" value="{{ task.tipografia }}">
+    </div>
+    <button type="submit" class="guardar">Guardar cambios</button>
+</form>
+</div>
+
+<style>
+body { background: #f4f6f9; font-family: 'Segoe UI', sans-serif; }
+.titulo { padding: 30px 40px; font-size: 28px; color: #111827; }
+.form-container { max-width: 500px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+.input-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+label { margin-bottom: 5px; font-size: 14px; color: #555; }
+input, textarea, select { padding: 12px; border-radius: 10px; border: 1px solid #ddd; outline: none; transition: 0.3s; font-size: 14px; }
+textarea { resize: none; height: 100px; }
+input:focus, textarea:focus, select:focus { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
+.guardar { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 10px; font-size: 15px; cursor: pointer; transition: 0.3s; }
+.guardar:hover { background: #4338ca; }
+</style>
+```
